@@ -1,0 +1,42 @@
+<div class="players">
+  <div>
+    <div *ngIf="currentPlayer.number === 1">
+      It is your turn {{currentPlayer.name}} (player {{currentPlayer.number}})
+    </div>
+  </div>
+
+  <div>
+    <button (click)="turnChange()">Change turn</button>
+  </div>
+
+  <div>
+    <div *ngIf="currentPlayer.number === 2">
+      It is your turn {{currentPlayer.name}} (player {{currentPlayer.number}})
+    </div>
+  </div>
+</div>
+
+<div class="board">
+  <div *ngFor="let row of squares; let rowIndex = index">
+    <div *ngFor="let square of row let colIndex = index" class="square"
+         [ngClass]="{
+            'square-dark': (rowIndex % 2 !== 0 && colIndex % 2 === 0) || (rowIndex % 2 === 0 && colIndex % 2 !== 0),
+            'square-hole': square.isHole,
+            activated: square.activated
+         }"
+         (click)="clickSquare(square)">
+
+      <div class="coordinates">
+        {{square.row}} - {{square.column}}
+      </div>
+
+      <app-icon [piece]="square.piece"
+                draggable="true"
+                [customCss]="{'font-size': 'calc(min(100vw, 100vh) / 12)'}"></app-icon>
+
+    </div>
+  </div>
+
+</div>
+
+

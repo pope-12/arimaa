@@ -1,0 +1,62 @@
+$squareSize: calc(min(95vh, 95vw) / 8);
+:host {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.board {
+  text-align: center;
+  display: grid;
+  grid-template-columns: $squareSize $squareSize $squareSize $squareSize $squareSize $squareSize $squareSize $squareSize;
+  grid-template-rows: $squareSize $squareSize $squareSize $squareSize $squareSize $squareSize $squareSize $squareSize;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  column-gap: 0;
+  row-gap: 0;
+  margin:auto;
+  max-width: min(95vh, 95vw);
+}
+
+.square {
+  width: $squareSize;
+  height: $squareSize;
+  position: relative;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/assets/images/boards/marble_d.png");
+  background-size: cover;
+
+  .coordinates {
+    position: absolute;
+    bottom: 2px;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    font-size: .6rem;
+  }
+
+  &.activated {
+    border: 5px solid #4b0000;
+  }
+}
+
+.square-dark {
+  background-color: #f0f0f0;
+  background-image: url("/assets/images/boards/fritz_l.png");
+}
+.square-hole {
+  background-image: url("/assets/images/boards/lapis_d.png");
+  background-color: #333333;
+  color: #f0f0f0;
+}
